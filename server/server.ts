@@ -3,7 +3,7 @@ import express, {Request, Response} from 'express';
 
 // local variables
 const app = express();
-const PORT = 8080;
+const PORT =  process.env.NODE_ENV === 'test' ? 8081 : 8080;
 
 // middleware to make sure that we can parse the json
 app.use(express.json());
@@ -27,6 +27,11 @@ return res.status(200).json({msg: 'Success'})
 
 
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+if (process.env.NODE_ENV !== 'test') {
+  app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+  });
+}
+
+// export for testing. 
+export { app };
