@@ -1,7 +1,7 @@
 // External Dependencies
 import React from 'react';
 import Paper from '@mui/material/Paper'
-import styled from 'styled-components'
+import {styled} from '@mui/material/styles'
 import EnhancedButton from '../../shared/button';
 
 const StyledPaper = styled(Paper)({
@@ -14,7 +14,7 @@ const StyledPaper = styled(Paper)({
     margin: 8,
 })
 
-const StyledWrapper = styled.div({
+const StyledWrapper = styled('div')({
 width: '100%',
 display: 'flex',
 justifyContent: 'space-evenly',

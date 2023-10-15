@@ -9,14 +9,14 @@ interface EnhancedButtonProps {
     title: string,
 }
 
-const StyledButton = styled(Button)({
-    backgroundColor: orange[300],
+const StyledButton = styled(Button)(({theme})=> ({
+    backgroundColor: theme.palette.secondary.light,
     color: 'black',
     width: 200,
     '&:hover':{
-        backgroundColor: orange[500],
+        backgroundColor: theme.palette.secondary.main,
     }
-});
+}));
 
 const EnhancedButton: React.FC<EnhancedButtonProps> = ({onClick, title}) => {
     return (
