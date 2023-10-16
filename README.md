@@ -45,17 +45,20 @@ You will need to run two separate terminals. One for the server an one for the c
 1. You have not entered a number at all in to the validation form.
     - For this you will click on the main page to be taken to the validator. 
     - With an empty textfield you will click on the validate button. 
-    - You should see the error message "Please provide a Credit Card Number" 
+    - You should see the error message "Please provide a Credit Card Number"
+      
     ![no-number](./readme_resources/no-number-entered.png)
 2. You have entered an invalid credit card number. 
     - For this enter any random number like `121212121212121212` into the form.
     - Click the validate button to submit.
-    - You should see the error message "Not a valid Credit Card Number" 
+    - You should see the error message "Not a valid Credit Card Number"
+      
     ![invalid-number](./readme_resources/invalid-number-entered.png)
 3. You have entered a valid credit card number. 
     - For this case enter a valid number like `4556925412281287` into the form.
     - Click the validate button to submit. 
     - You should see the success message "Success, Thats a valid number!"
+    
     ![valid-number](./readme_resources/valid-number-entered.png)
 ---
 ### Testing Continued
