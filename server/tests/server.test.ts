@@ -19,7 +19,7 @@ describe('Server Tests', () =>{
         // Check that the response status is 400 (Bad Request).
         expect(response.status).toBe(400);
         // Check that the response body contains the expected error message.
-        expect(response.body).toEqual({ error: 'Please provide a Credit Card Number' });
+        expect(response.body).toEqual({ error: 'Please provide a Credit Card Number', isValid: false });
       });
 
       it('should respond with 400 for POST /validateCard without a valid credit card number', async () => {
@@ -27,7 +27,7 @@ describe('Server Tests', () =>{
         // Check that the response status is 400 (Bad Request).
         expect(response.status).toBe(400);
         // Check that the response body contains the expected error message.
-        expect(response.body).toEqual({ error: 'Not a valid Credit Card Number' });
+        expect(response.body).toEqual({ error: 'Not a valid Credit Card Number', isValid: false });
       });
       
       // Test for the POST /validateCard endpoint with a valid credit card number.
@@ -36,6 +36,6 @@ describe('Server Tests', () =>{
         // Check that the response status is 200 (OK).
         expect(response.status).toBe(200);
         // Check that the response body contains the expected success message.
-        expect(response.body).toEqual({ msg: 'Success' });
+        expect(response.body).toEqual({ msg: 'Success, Thats a valid number!', isValid: true});
       });
 });
