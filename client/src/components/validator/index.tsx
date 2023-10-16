@@ -1,37 +1,68 @@
 // External Dependencies
-import React from 'react';
-import Paper from '@mui/material/Paper'
-import {styled} from '@mui/material/styles'
-import EnhancedButton from '../../shared/button';
+import React, { useEffect, useState } from "react";
+import Paper from "@mui/material/Paper";
+import { styled } from "@mui/material/styles";
+import Typography from "@mui/material/Typography";
+import Slide from "@mui/material/Slide";
+import ValidationForm from "./ValidationForm";
 
-const StyledPaper = styled(Paper)({
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'space-around',
-    width: '50%',
-    height: '80vh',
-    margin: 8,
-})
+// Local Variables
+const StyledPaper = styled(Paper)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "space-around",
+  width: "50%",
+  height: "80vh",
+  [theme.breakpoints.down("sm")]: {
+    width: "100%",
+    margin: "20px",
+    height: "50vh",
+  },
+}));
 
-const StyledWrapper = styled('div')({
-width: '100%',
-display: 'flex',
-justifyContent: 'space-evenly',
-alignItems: 'center',
-})
+const StyledWrapper = styled("div")(({ theme }) => ({
+  display: "flex",
+  justifyContent: "space-evenly",
+  alignItems: "center",
+  margin: "20px",
+  ".MuiTypography-h4": {
+    width: "30%",
+  },
+  [theme.breakpoints.down("sm")]: {
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    ".MuiTypography-h4": {
+      width: "100%",
+    },
+  },
+}));
 
-const Validator: React.FC = () =>{
-    return (
-        <StyledWrapper>
-            this is the validator!
-            <StyledPaper variant='elevation' elevation={3}>
-                
-                Paper
-                <EnhancedButton onClick={()=> alert('clicked')} title='validate'/>
-            </StyledPaper>
-        </StyledWrapper>
-    )
-}
+const Validator: React.FC = () => {
+  const [animate, setAnimate] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setAnimate(true);
+    }, 500);
+  }, []);
+
+  return (
+    <StyledWrapper>
+      <Slide in={animate}>
+        <Typography variant="h4">
+          Please input your credit card number in the provided form and click
+          validate.{" "}
+        </Typography>
+      </Slide>
+      <Slide in={animate} direction="up">
+        <StyledPaper variant="elevation" elevation={3}>
+          <ValidationForm />
+        </StyledPaper>
+      </Slide>
+    </StyledWrapper>
+  );
+};
 
 export default Validator;

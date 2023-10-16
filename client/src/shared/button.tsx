@@ -1,6 +1,5 @@
 // External Dependencies
 import Button from '@mui/material/Button'
-import { orange } from '@mui/material/colors';
 import React from 'react';
 import {styled} from '@mui/material/styles'
 
@@ -13,6 +12,7 @@ const StyledButton = styled(Button)(({theme})=> ({
     backgroundColor: theme.palette.secondary.light,
     color: 'black',
     width: 200,
+    margin: 18,
     '&:hover':{
         backgroundColor: theme.palette.secondary.main,
     }
