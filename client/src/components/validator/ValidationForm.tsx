@@ -10,7 +10,7 @@ import EnhancedButton from "../../shared/button";
 
 // Type Definitions
 type ValidationResult = {
-  isValid?: boolean; // Make it optional by adding ?
+  isValid?: boolean; 
   msg?: string;
   error?: string;
 };
@@ -39,11 +39,11 @@ const FormWrapper = styled(Box)({
 const StyledTextField = styled(TextField)({
   width: 200,
   "& input::-webkit-outer-spin-button, & input::-webkit-inner-spin-button": {
-    "-webkit-appearance": "none",
+    WebkitAppearance: "none",
     margin: 0,
   },
   "& input[type=number]": {
-    "-moz-appearance": "textfield",
+    MozAppearance: "textfield",
   },
 });
 

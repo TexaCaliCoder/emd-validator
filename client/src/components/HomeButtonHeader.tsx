@@ -1,7 +1,7 @@
-import React, { useState, } from "react";
+import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import EnhancedButton from "../shared/button";
-import { Zoom } from "@mui/material";
+import { Slide } from "@mui/material";
 
 const HomeButtonHeader: React.FC = () => {
   const [animate, setAnimate] = useState(false);
@@ -13,14 +13,18 @@ const HomeButtonHeader: React.FC = () => {
   };
   const isValidationRoute = location.pathname === "/validator";
 
+  useEffect(() => {
+    if (isValidationRoute) setAnimate(true);
+  }, [isValidationRoute]);
+
   return (
     <>
       {isValidationRoute && (
-        <Zoom
-          in={animate}
-        >
-          <EnhancedButton onClick={handleClick} title="return home" />
-        </Zoom>
+        <Slide in={animate}>
+          <div>
+            <EnhancedButton onClick={handleClick} title="return home" />
+          </div>
+        </Slide>
       )}
     </>
   );

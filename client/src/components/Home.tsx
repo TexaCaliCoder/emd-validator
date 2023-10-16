@@ -2,13 +2,13 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { styled } from "@mui/material/styles";
+import { Typography } from "@mui/material";
 
 // Internal Dependencies
 import EnhancedButton from "../shared/button";
-import { Typography } from "@mui/material";
 
 // local variables
-const StyledWrapper = styled("div")(({theme})=>({
+const StyledWrapper = styled("div")({
   display: "flex",
   flexDirection: "column",
   justifyContent: "space-evenly",
@@ -20,7 +20,7 @@ const StyledWrapper = styled("div")(({theme})=>({
     alignItems: 'center',
     padding: 18,
   },
-}));
+});
 
 const Home: React.FC = () => {
   const navigate = useNavigate();
