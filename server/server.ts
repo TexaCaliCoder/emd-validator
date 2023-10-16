@@ -1,5 +1,6 @@
 // external dependencies
 import express, {Request, Response} from 'express';
+import cors from 'cors';
 
 // local variables
 const app = express();
@@ -7,6 +8,12 @@ const PORT =  process.env.NODE_ENV === 'test' ? 8081 : 8080;
 
 // middleware to make sure that we can parse the json
 app.use(express.json());
+
+// middleware to allow cors access
+app.use(cors({
+  origin: 'http://localhost:3000', // only allow for our validation app
+  methods: 'GET, POST',
+}));
 
 // test to make sure we can hit the server from postman
 app.get('/', (req: Request, res: Response)=>{
@@ -18,13 +25,13 @@ app.post('/validateCard', (req: Request, res:Response)=>{
 const creditCardNumber: string = req.body.creditCardNumber;
 
 if(!creditCardNumber){
-  return res.status(400).json({error: 'Please provide a Credit Card Number'})
+  return res.status(400).json({error: 'Please provide a Credit Card Number', isValid: false})
 }
 if(!isValidLuhn(creditCardNumber)){
-  return res.status(400).json({error: 'Not a valid Credit Card Number'})
+  return res.status(400).json({error: 'Not a valid Credit Card Number', isValid: false})
 }
 
-return res.status(200).json({msg: 'Success'})
+return res.status(200).json({msg: 'Success, Thats a valid number!', isValid: true})
 });
 
 
